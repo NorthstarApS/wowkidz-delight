@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /kurv
+Disallow: /checkout
+Disallow: /soeg

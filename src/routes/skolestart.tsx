@@ -50,7 +50,7 @@ export const Route = createFileRoute("/skolestart")({
         "Regntøj til cykelturen",
       ]}
       productParams={{ search: "skole" }}
-      relatedLabels={["Læring", "Børnetøj", "Praktisk hverdag" as never, "Legetøj"]}
+      relatedLabels={["Læring", "Børnetøj", "Legetøj"]}
       ctaLabel="Se alt til skolestart"
       ctaTo="/shop"
     />

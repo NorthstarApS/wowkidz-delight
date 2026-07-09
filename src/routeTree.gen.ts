@@ -9,38 +9,488 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TakForDinOrdreRouteImport } from './routes/tak-for-din-ordre'
+import { Route as SoegRouteImport } from './routes/soeg'
+import { Route as SkolestartRouteImport } from './routes/skolestart'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as ShopRouteImport } from './routes/shop'
+import { Route as PrivatlivspolitikRouteImport } from './routes/privatlivspolitik'
+import { Route as PraktiskFamilielivRouteImport } from './routes/praktisk-familieliv'
+import { Route as OmOsRouteImport } from './routes/om-os'
+import { Route as LeveringReturneringRouteImport } from './routes/levering-returnering'
+import { Route as LegetojEfterAlderRouteImport } from './routes/legetoj-efter-alder'
+import { Route as LegOgLaeringRouteImport } from './routes/leg-og-laering'
+import { Route as KurvRouteImport } from './routes/kurv'
+import { Route as KreativLegRouteImport } from './routes/kreativ-leg'
+import { Route as KontaktRouteImport } from './routes/kontakt'
+import { Route as HandelsbetingelserRouteImport } from './routes/handelsbetingelser'
+import { Route as GaveideerTilBornRouteImport } from './routes/gaveideer-til-born'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as CookiepolitikRouteImport } from './routes/cookiepolitik'
+import { Route as CheckoutRouteImport } from './routes/checkout'
+import { Route as BoernetoejRouteImport } from './routes/boernetoej'
+import { Route as BabyudstyrRouteImport } from './routes/babyudstyr'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProduktSlugRouteImport } from './routes/produkt.$slug'
+import { Route as KategoriSlugRouteImport } from './routes/kategori.$slug'
 
+const TakForDinOrdreRoute = TakForDinOrdreRouteImport.update({
+  id: '/tak-for-din-ordre',
+  path: '/tak-for-din-ordre',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SoegRoute = SoegRouteImport.update({
+  id: '/soeg',
+  path: '/soeg',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SkolestartRoute = SkolestartRouteImport.update({
+  id: '/skolestart',
+  path: '/skolestart',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShopRoute = ShopRouteImport.update({
+  id: '/shop',
+  path: '/shop',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivatlivspolitikRoute = PrivatlivspolitikRouteImport.update({
+  id: '/privatlivspolitik',
+  path: '/privatlivspolitik',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PraktiskFamilielivRoute = PraktiskFamilielivRouteImport.update({
+  id: '/praktisk-familieliv',
+  path: '/praktisk-familieliv',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OmOsRoute = OmOsRouteImport.update({
+  id: '/om-os',
+  path: '/om-os',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LeveringReturneringRoute = LeveringReturneringRouteImport.update({
+  id: '/levering-returnering',
+  path: '/levering-returnering',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegetojEfterAlderRoute = LegetojEfterAlderRouteImport.update({
+  id: '/legetoj-efter-alder',
+  path: '/legetoj-efter-alder',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegOgLaeringRoute = LegOgLaeringRouteImport.update({
+  id: '/leg-og-laering',
+  path: '/leg-og-laering',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KurvRoute = KurvRouteImport.update({
+  id: '/kurv',
+  path: '/kurv',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KreativLegRoute = KreativLegRouteImport.update({
+  id: '/kreativ-leg',
+  path: '/kreativ-leg',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KontaktRoute = KontaktRouteImport.update({
+  id: '/kontakt',
+  path: '/kontakt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HandelsbetingelserRoute = HandelsbetingelserRouteImport.update({
+  id: '/handelsbetingelser',
+  path: '/handelsbetingelser',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GaveideerTilBornRoute = GaveideerTilBornRouteImport.update({
+  id: '/gaveideer-til-born',
+  path: '/gaveideer-til-born',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CookiepolitikRoute = CookiepolitikRouteImport.update({
+  id: '/cookiepolitik',
+  path: '/cookiepolitik',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheckoutRoute = CheckoutRouteImport.update({
+  id: '/checkout',
+  path: '/checkout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BoernetoejRoute = BoernetoejRouteImport.update({
+  id: '/boernetoej',
+  path: '/boernetoej',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BabyudstyrRoute = BabyudstyrRouteImport.update({
+  id: '/babyudstyr',
+  path: '/babyudstyr',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProduktSlugRoute = ProduktSlugRouteImport.update({
+  id: '/produkt/$slug',
+  path: '/produkt/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KategoriSlugRoute = KategoriSlugRouteImport.update({
+  id: '/kategori/$slug',
+  path: '/kategori/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/babyudstyr': typeof BabyudstyrRoute
+  '/boernetoej': typeof BoernetoejRoute
+  '/checkout': typeof CheckoutRoute
+  '/cookiepolitik': typeof CookiepolitikRoute
+  '/faq': typeof FaqRoute
+  '/gaveideer-til-born': typeof GaveideerTilBornRoute
+  '/handelsbetingelser': typeof HandelsbetingelserRoute
+  '/kontakt': typeof KontaktRoute
+  '/kreativ-leg': typeof KreativLegRoute
+  '/kurv': typeof KurvRoute
+  '/leg-og-laering': typeof LegOgLaeringRoute
+  '/legetoj-efter-alder': typeof LegetojEfterAlderRoute
+  '/levering-returnering': typeof LeveringReturneringRoute
+  '/om-os': typeof OmOsRoute
+  '/praktisk-familieliv': typeof PraktiskFamilielivRoute
+  '/privatlivspolitik': typeof PrivatlivspolitikRoute
+  '/shop': typeof ShopRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/skolestart': typeof SkolestartRoute
+  '/soeg': typeof SoegRoute
+  '/tak-for-din-ordre': typeof TakForDinOrdreRoute
+  '/kategori/$slug': typeof KategoriSlugRoute
+  '/produkt/$slug': typeof ProduktSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/babyudstyr': typeof BabyudstyrRoute
+  '/boernetoej': typeof BoernetoejRoute
+  '/checkout': typeof CheckoutRoute
+  '/cookiepolitik': typeof CookiepolitikRoute
+  '/faq': typeof FaqRoute
+  '/gaveideer-til-born': typeof GaveideerTilBornRoute
+  '/handelsbetingelser': typeof HandelsbetingelserRoute
+  '/kontakt': typeof KontaktRoute
+  '/kreativ-leg': typeof KreativLegRoute
+  '/kurv': typeof KurvRoute
+  '/leg-og-laering': typeof LegOgLaeringRoute
+  '/legetoj-efter-alder': typeof LegetojEfterAlderRoute
+  '/levering-returnering': typeof LeveringReturneringRoute
+  '/om-os': typeof OmOsRoute
+  '/praktisk-familieliv': typeof PraktiskFamilielivRoute
+  '/privatlivspolitik': typeof PrivatlivspolitikRoute
+  '/shop': typeof ShopRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/skolestart': typeof SkolestartRoute
+  '/soeg': typeof SoegRoute
+  '/tak-for-din-ordre': typeof TakForDinOrdreRoute
+  '/kategori/$slug': typeof KategoriSlugRoute
+  '/produkt/$slug': typeof ProduktSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/babyudstyr': typeof BabyudstyrRoute
+  '/boernetoej': typeof BoernetoejRoute
+  '/checkout': typeof CheckoutRoute
+  '/cookiepolitik': typeof CookiepolitikRoute
+  '/faq': typeof FaqRoute
+  '/gaveideer-til-born': typeof GaveideerTilBornRoute
+  '/handelsbetingelser': typeof HandelsbetingelserRoute
+  '/kontakt': typeof KontaktRoute
+  '/kreativ-leg': typeof KreativLegRoute
+  '/kurv': typeof KurvRoute
+  '/leg-og-laering': typeof LegOgLaeringRoute
+  '/legetoj-efter-alder': typeof LegetojEfterAlderRoute
+  '/levering-returnering': typeof LeveringReturneringRoute
+  '/om-os': typeof OmOsRoute
+  '/praktisk-familieliv': typeof PraktiskFamilielivRoute
+  '/privatlivspolitik': typeof PrivatlivspolitikRoute
+  '/shop': typeof ShopRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/skolestart': typeof SkolestartRoute
+  '/soeg': typeof SoegRoute
+  '/tak-for-din-ordre': typeof TakForDinOrdreRoute
+  '/kategori/$slug': typeof KategoriSlugRoute
+  '/produkt/$slug': typeof ProduktSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/babyudstyr'
+    | '/boernetoej'
+    | '/checkout'
+    | '/cookiepolitik'
+    | '/faq'
+    | '/gaveideer-til-born'
+    | '/handelsbetingelser'
+    | '/kontakt'
+    | '/kreativ-leg'
+    | '/kurv'
+    | '/leg-og-laering'
+    | '/legetoj-efter-alder'
+    | '/levering-returnering'
+    | '/om-os'
+    | '/praktisk-familieliv'
+    | '/privatlivspolitik'
+    | '/shop'
+    | '/sitemap.xml'
+    | '/skolestart'
+    | '/soeg'
+    | '/tak-for-din-ordre'
+    | '/kategori/$slug'
+    | '/produkt/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/babyudstyr'
+    | '/boernetoej'
+    | '/checkout'
+    | '/cookiepolitik'
+    | '/faq'
+    | '/gaveideer-til-born'
+    | '/handelsbetingelser'
+    | '/kontakt'
+    | '/kreativ-leg'
+    | '/kurv'
+    | '/leg-og-laering'
+    | '/legetoj-efter-alder'
+    | '/levering-returnering'
+    | '/om-os'
+    | '/praktisk-familieliv'
+    | '/privatlivspolitik'
+    | '/shop'
+    | '/sitemap.xml'
+    | '/skolestart'
+    | '/soeg'
+    | '/tak-for-din-ordre'
+    | '/kategori/$slug'
+    | '/produkt/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/babyudstyr'
+    | '/boernetoej'
+    | '/checkout'
+    | '/cookiepolitik'
+    | '/faq'
+    | '/gaveideer-til-born'
+    | '/handelsbetingelser'
+    | '/kontakt'
+    | '/kreativ-leg'
+    | '/kurv'
+    | '/leg-og-laering'
+    | '/legetoj-efter-alder'
+    | '/levering-returnering'
+    | '/om-os'
+    | '/praktisk-familieliv'
+    | '/privatlivspolitik'
+    | '/shop'
+    | '/sitemap.xml'
+    | '/skolestart'
+    | '/soeg'
+    | '/tak-for-din-ordre'
+    | '/kategori/$slug'
+    | '/produkt/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BabyudstyrRoute: typeof BabyudstyrRoute
+  BoernetoejRoute: typeof BoernetoejRoute
+  CheckoutRoute: typeof CheckoutRoute
+  CookiepolitikRoute: typeof CookiepolitikRoute
+  FaqRoute: typeof FaqRoute
+  GaveideerTilBornRoute: typeof GaveideerTilBornRoute
+  HandelsbetingelserRoute: typeof HandelsbetingelserRoute
+  KontaktRoute: typeof KontaktRoute
+  KreativLegRoute: typeof KreativLegRoute
+  KurvRoute: typeof KurvRoute
+  LegOgLaeringRoute: typeof LegOgLaeringRoute
+  LegetojEfterAlderRoute: typeof LegetojEfterAlderRoute
+  LeveringReturneringRoute: typeof LeveringReturneringRoute
+  OmOsRoute: typeof OmOsRoute
+  PraktiskFamilielivRoute: typeof PraktiskFamilielivRoute
+  PrivatlivspolitikRoute: typeof PrivatlivspolitikRoute
+  ShopRoute: typeof ShopRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  SkolestartRoute: typeof SkolestartRoute
+  SoegRoute: typeof SoegRoute
+  TakForDinOrdreRoute: typeof TakForDinOrdreRoute
+  KategoriSlugRoute: typeof KategoriSlugRoute
+  ProduktSlugRoute: typeof ProduktSlugRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/tak-for-din-ordre': {
+      id: '/tak-for-din-ordre'
+      path: '/tak-for-din-ordre'
+      fullPath: '/tak-for-din-ordre'
+      preLoaderRoute: typeof TakForDinOrdreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/soeg': {
+      id: '/soeg'
+      path: '/soeg'
+      fullPath: '/soeg'
+      preLoaderRoute: typeof SoegRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/skolestart': {
+      id: '/skolestart'
+      path: '/skolestart'
+      fullPath: '/skolestart'
+      preLoaderRoute: typeof SkolestartRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shop': {
+      id: '/shop'
+      path: '/shop'
+      fullPath: '/shop'
+      preLoaderRoute: typeof ShopRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privatlivspolitik': {
+      id: '/privatlivspolitik'
+      path: '/privatlivspolitik'
+      fullPath: '/privatlivspolitik'
+      preLoaderRoute: typeof PrivatlivspolitikRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/praktisk-familieliv': {
+      id: '/praktisk-familieliv'
+      path: '/praktisk-familieliv'
+      fullPath: '/praktisk-familieliv'
+      preLoaderRoute: typeof PraktiskFamilielivRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/om-os': {
+      id: '/om-os'
+      path: '/om-os'
+      fullPath: '/om-os'
+      preLoaderRoute: typeof OmOsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/levering-returnering': {
+      id: '/levering-returnering'
+      path: '/levering-returnering'
+      fullPath: '/levering-returnering'
+      preLoaderRoute: typeof LeveringReturneringRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legetoj-efter-alder': {
+      id: '/legetoj-efter-alder'
+      path: '/legetoj-efter-alder'
+      fullPath: '/legetoj-efter-alder'
+      preLoaderRoute: typeof LegetojEfterAlderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/leg-og-laering': {
+      id: '/leg-og-laering'
+      path: '/leg-og-laering'
+      fullPath: '/leg-og-laering'
+      preLoaderRoute: typeof LegOgLaeringRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kurv': {
+      id: '/kurv'
+      path: '/kurv'
+      fullPath: '/kurv'
+      preLoaderRoute: typeof KurvRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kreativ-leg': {
+      id: '/kreativ-leg'
+      path: '/kreativ-leg'
+      fullPath: '/kreativ-leg'
+      preLoaderRoute: typeof KreativLegRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kontakt': {
+      id: '/kontakt'
+      path: '/kontakt'
+      fullPath: '/kontakt'
+      preLoaderRoute: typeof KontaktRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/handelsbetingelser': {
+      id: '/handelsbetingelser'
+      path: '/handelsbetingelser'
+      fullPath: '/handelsbetingelser'
+      preLoaderRoute: typeof HandelsbetingelserRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gaveideer-til-born': {
+      id: '/gaveideer-til-born'
+      path: '/gaveideer-til-born'
+      fullPath: '/gaveideer-til-born'
+      preLoaderRoute: typeof GaveideerTilBornRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cookiepolitik': {
+      id: '/cookiepolitik'
+      path: '/cookiepolitik'
+      fullPath: '/cookiepolitik'
+      preLoaderRoute: typeof CookiepolitikRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/checkout': {
+      id: '/checkout'
+      path: '/checkout'
+      fullPath: '/checkout'
+      preLoaderRoute: typeof CheckoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/boernetoej': {
+      id: '/boernetoej'
+      path: '/boernetoej'
+      fullPath: '/boernetoej'
+      preLoaderRoute: typeof BoernetoejRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/babyudstyr': {
+      id: '/babyudstyr'
+      path: '/babyudstyr'
+      fullPath: '/babyudstyr'
+      preLoaderRoute: typeof BabyudstyrRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,22 +498,49 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/produkt/$slug': {
+      id: '/produkt/$slug'
+      path: '/produkt/$slug'
+      fullPath: '/produkt/$slug'
+      preLoaderRoute: typeof ProduktSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kategori/$slug': {
+      id: '/kategori/$slug'
+      path: '/kategori/$slug'
+      fullPath: '/kategori/$slug'
+      preLoaderRoute: typeof KategoriSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BabyudstyrRoute: BabyudstyrRoute,
+  BoernetoejRoute: BoernetoejRoute,
+  CheckoutRoute: CheckoutRoute,
+  CookiepolitikRoute: CookiepolitikRoute,
+  FaqRoute: FaqRoute,
+  GaveideerTilBornRoute: GaveideerTilBornRoute,
+  HandelsbetingelserRoute: HandelsbetingelserRoute,
+  KontaktRoute: KontaktRoute,
+  KreativLegRoute: KreativLegRoute,
+  KurvRoute: KurvRoute,
+  LegOgLaeringRoute: LegOgLaeringRoute,
+  LegetojEfterAlderRoute: LegetojEfterAlderRoute,
+  LeveringReturneringRoute: LeveringReturneringRoute,
+  OmOsRoute: OmOsRoute,
+  PraktiskFamilielivRoute: PraktiskFamilielivRoute,
+  PrivatlivspolitikRoute: PrivatlivspolitikRoute,
+  ShopRoute: ShopRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
+  SkolestartRoute: SkolestartRoute,
+  SoegRoute: SoegRoute,
+  TakForDinOrdreRoute: TakForDinOrdreRoute,
+  KategoriSlugRoute: KategoriSlugRoute,
+  ProduktSlugRoute: ProduktSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

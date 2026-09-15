@@ -1,30 +1,72 @@
 import { useEffect, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ChevronDown, Minus, Plus, ShieldCheck, ShoppingCart, Truck, Undo2, Zap } from "lucide-react";
-import { useProduct } from "@/hooks/useProduct";
 import { useProducts } from "@/hooks/useProducts";
 import { useRecentlyViewed } from "@/hooks/useRecentlyViewed";
 import { useCart } from "@/context/CartContext";
 import { priceParts, stripHtml } from "@/lib/format";
+import { productJsonLdScript } from "@/lib/productJsonLd";
 import { ProductGrid } from "@/components/ProductGrid";
 import { Breadcrumbs } from "@/components/CategoryHero";
 import { buildCheckoutHandoverUrl } from "@/services/storeApi";
+import { fetchProductBySlug } from "@/services/woocommerce";
 
 export const Route = createFileRoute("/produkt/$slug")({
-  head: ({ params }) => ({
-    meta: [
-      { title: "Produkt | WowKidz.dk" },
-      {
-        name: "description",
-        content: "Se produktet hos WowKidz.dk — dansk webshop for børnefamilier med fair priser og nem retur.",
-      },
-      { property: "og:type", content: "product" },
-      { property: "og:url", content: `/produkt/${params.slug}` },
-    ],
-    links: [{ rel: "canonical", href: `/produkt/${params.slug}` }],
-  }),
+  loader: async ({ context, params }) => {
+    try {
+      const product = await context.queryClient.ensureQueryData({
+        queryKey: ["product", params.slug],
+        queryFn: () => fetchProductBySlug({ data: { slug: params.slug } }),
+        staleTime: 5 * 60_000,
+      });
+      return { product };
+    } catch {
+      return { product: null };
+    }
+  },
+  head: ({ params, loaderData }) => {
+    const product = loaderData?.product ?? null;
+    const description = product
+      ? stripHtml(product.short_description) ||
+        stripHtml(product.description) ||
+        `${product.name} hos WowKidz.dk — fair priser og nem retur.`
+      : "Se produktet hos WowKidz.dk — dansk webshop for børnefamilier med fair priser og nem retur.";
+    const title = product ? `${product.name} | WowKidz.dk` : "Produkt | WowKidz.dk";
+
+    return {
+      meta: [
+        { title },
+        { name: "description", content: description.slice(0, 300) },
+        { property: "og:type", content: "product" },
+        { property: "og:title", content: title },
+        { property: "og:description", content: description.slice(0, 300) },
+        { property: "og:url", content: `/produkt/${params.slug}` },
+        ...(product?.images[0]?.src
+          ? [{ property: "og:image", content: product.images[0].src }]
+          : []),
+      ],
+      links: [{ rel: "canonical", href: `/produkt/${params.slug}` }],
+      scripts: product ? [productJsonLdScript(product)] : [],
+    };
+  },
+  pendingComponent: ProductPending,
   component: ProductPage,
 });
+
+function ProductPending() {
+  return (
+    <div className="container-wk grid gap-8 py-8 md:grid-cols-2">
+      <div className="skeleton-wk aspect-square" />
+      <div className="space-y-4">
+        <div className="skeleton-wk h-4 w-40" />
+        <div className="skeleton-wk h-9 w-4/5" />
+        <div className="skeleton-wk h-6 w-32" />
+        <div className="skeleton-wk h-20 w-full" />
+        <div className="skeleton-wk h-12 w-full" />
+      </div>
+    </div>
+  );
+}
 
 const ACCORDIONS: { title: string; render: (p: { short: string; full: string }) => string }[] = [
   { title: "Kort fortalt", render: ({ short }) => short },
@@ -56,8 +98,7 @@ const ACCORDIONS: { title: string; render: (p: { short: string; full: string }) 
 ];
 
 function ProductPage() {
-  const { slug } = Route.useParams();
-  const { data: product, isLoading } = useProduct(slug);
+  const { product } = Route.useLoaderData();
   const { addProduct } = useCart();
   const { items: recentItems, track } = useRecentlyViewed();
   const [quantity, setQuantity] = useState(1);
@@ -89,21 +130,8 @@ function ProductPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [product?.id]);
 
-  if (isLoading) {
-    return (
-      <div className="container-wk grid gap-8 py-8 md:grid-cols-2">
-        <div className="skeleton-wk aspect-square" />
-        <div className="space-y-4">
-          <div className="skeleton-wk h-4 w-40" />
-          <div className="skeleton-wk h-9 w-4/5" />
-          <div className="skeleton-wk h-6 w-32" />
-          <div className="skeleton-wk h-20 w-full" />
-          <div className="skeleton-wk h-12 w-full" />
-        </div>
-      </div>
-    );
-  }
-
+  // Loader already resolved the product (or 404). Avoid a client skeleton that
+  // would hydrate-mismatch the SSR HTML.
   if (!product) {
     return (
       <div className="container-wk py-20 text-center">

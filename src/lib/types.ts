@@ -50,6 +50,8 @@ export interface WooProduct {
   prices: WooPrices;
   images: WooImage[];
   categories: WooCategoryRef[];
+  /** Store API tags — often empty on WowKidz, but used when present. */
+  tags?: { id: number; name: string; slug: string; link?: string }[];
   is_in_stock: boolean;
   is_purchasable: boolean;
   low_stock_remaining: number | null;

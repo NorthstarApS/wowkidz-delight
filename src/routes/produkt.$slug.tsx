@@ -6,23 +6,50 @@ import { useProducts } from "@/hooks/useProducts";
 import { useRecentlyViewed } from "@/hooks/useRecentlyViewed";
 import { useCart } from "@/context/CartContext";
 import { priceParts, stripHtml } from "@/lib/format";
+import { productJsonLdScript } from "@/lib/productJsonLd";
 import { ProductGrid } from "@/components/ProductGrid";
 import { Breadcrumbs } from "@/components/CategoryHero";
 import { buildCheckoutHandoverUrl } from "@/services/storeApi";
+import { fetchProductBySlug } from "@/services/woocommerce";
 
 export const Route = createFileRoute("/produkt/$slug")({
-  head: ({ params }) => ({
-    meta: [
-      { title: "Produkt | WowKidz.dk" },
-      {
-        name: "description",
-        content: "Se produktet hos WowKidz.dk — dansk webshop for børnefamilier med fair priser og nem retur.",
-      },
-      { property: "og:type", content: "product" },
-      { property: "og:url", content: `/produkt/${params.slug}` },
-    ],
-    links: [{ rel: "canonical", href: `/produkt/${params.slug}` }],
-  }),
+  loader: async ({ context, params }) => {
+    try {
+      const product = await context.queryClient.ensureQueryData({
+        queryKey: ["product", params.slug],
+        queryFn: () => fetchProductBySlug({ data: { slug: params.slug } }),
+        staleTime: 5 * 60_000,
+      });
+      return { product };
+    } catch {
+      return { product: null };
+    }
+  },
+  head: ({ params, loaderData }) => {
+    const product = loaderData?.product ?? null;
+    const description = product
+      ? stripHtml(product.short_description) ||
+        stripHtml(product.description) ||
+        `${product.name} hos WowKidz.dk — fair priser og nem retur.`
+      : "Se produktet hos WowKidz.dk — dansk webshop for børnefamilier med fair priser og nem retur.";
+    const title = product ? `${product.name} | WowKidz.dk` : "Produkt | WowKidz.dk";
+
+    return {
+      meta: [
+        { title },
+        { name: "description", content: description.slice(0, 300) },
+        { property: "og:type", content: "product" },
+        { property: "og:title", content: title },
+        { property: "og:description", content: description.slice(0, 300) },
+        { property: "og:url", content: `/produkt/${params.slug}` },
+        ...(product?.images[0]?.src
+          ? [{ property: "og:image", content: product.images[0].src }]
+          : []),
+      ],
+      links: [{ rel: "canonical", href: `/produkt/${params.slug}` }],
+      scripts: product ? [productJsonLdScript(product)] : [],
+    };
+  },
   component: ProductPage,
 });
 
